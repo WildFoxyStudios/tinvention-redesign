@@ -7,6 +7,13 @@ import Logo from './Logo';
 const Footer: React.FC = () => {
   const { t } = useTranslation();
 
+  const handleSectionScroll = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <footer style={{ 
       padding: '6rem 2rem 3rem', 
@@ -38,21 +45,21 @@ const Footer: React.FC = () => {
           <div>
             <h5 className="mono" style={{ color: 'var(--text-primary)', fontSize: '0.8rem', marginBottom: '1.5rem', textTransform: 'uppercase' }}>{t('nav.services')}</h5>
             <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.75rem', fontSize: '0.85rem', color: 'var(--text-muted)', padding: 0 }}>
-              <li><Link to="/#about" style={{ color: 'inherit' }}>{t('nav.about')}</Link></li>
-              <li><Link to="/#services" style={{ color: 'inherit' }}>{t('nav.services')}</Link></li>
-              <li><Link to="/#tech" style={{ color: 'inherit' }}>{t('nav.tech')}</Link></li>
-              <li><Link to="/#careers" style={{ color: 'inherit' }}>{t('nav.careers')}</Link></li>
+              <li style={{ cursor: 'pointer' }}><span onClick={() => handleSectionScroll('about')} style={{ color: 'inherit', textDecoration: 'none', display: 'block' }} onMouseEnter={(e) => e.currentTarget.style.color = 'var(--accent-primary)'} onMouseLeave={(e) => e.currentTarget.style.color = 'var(--text-muted)'} >{t('nav.about')}</span></li>
+              <li style={{ cursor: 'pointer' }}><span onClick={() => handleSectionScroll('services')} style={{ color: 'inherit', textDecoration: 'none', display: 'block' }} onMouseEnter={(e) => e.currentTarget.style.color = 'var(--accent-primary)'} onMouseLeave={(e) => e.currentTarget.style.color = 'var(--text-muted)'} >{t('nav.services')}</span></li>
+              <li style={{ cursor: 'pointer' }}><span onClick={() => handleSectionScroll('tech')} style={{ color: 'inherit', textDecoration: 'none', display: 'block' }} onMouseEnter={(e) => e.currentTarget.style.color = 'var(--accent-primary)'} onMouseLeave={(e) => e.currentTarget.style.color = 'var(--text-muted)'} >{t('nav.tech')}</span></li>
+              <li style={{ cursor: 'pointer' }}><span onClick={() => handleSectionScroll('careers')} style={{ color: 'inherit', textDecoration: 'none', display: 'block' }} onMouseEnter={(e) => e.currentTarget.style.color = 'var(--accent-primary)'} onMouseLeave={(e) => e.currentTarget.style.color = 'var(--text-muted)'} >{t('nav.careers')}</span></li>
             </ul>
           </div>
 
           <div>
             <h5 className="mono" style={{ color: 'var(--text-primary)', fontSize: '0.8rem', marginBottom: '1.5rem', textTransform: 'uppercase' }}>Legal</h5>
             <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '0.75rem', fontSize: '0.85rem', color: 'var(--text-muted)', padding: 0 }}>
-              <li><Link to="/legal/privacy-policy" style={{ color: 'inherit' }}>{t('footer.legal.privacy')}</Link></li>
-              <li><Link to="/legal/privacy-candidates" style={{ color: 'inherit' }}>{t('footer.legal.candidates')}</Link></li>
-              <li><Link to="/legal/model-231" style={{ color: 'inherit' }}>{t('footer.legal.model231')}</Link></li>
-              <li><Link to="/legal/whistleblowing" style={{ color: 'inherit' }}>{t('footer.legal.whistleblowing')}</Link></li>
-              <li><Link to="/legal/quality-policy" style={{ color: 'inherit' }}>{t('footer.legal.quality')}</Link></li>
+              <li><Link to="/legal/privacy-policy" style={{ color: 'inherit', textDecoration: 'none' }} onMouseEnter={(e) => e.currentTarget.style.color = 'var(--accent-primary)'} onMouseLeave={(e) => e.currentTarget.style.color = 'var(--text-muted)'} >{t('footer.legal.privacy')}</Link></li>
+              <li><Link to="/legal/privacy-candidates" style={{ color: 'inherit', textDecoration: 'none' }} onMouseEnter={(e) => e.currentTarget.style.color = 'var(--accent-primary)'} onMouseLeave={(e) => e.currentTarget.style.color = 'var(--text-muted)'} >{t('footer.legal.candidates')}</Link></li>
+              <li><Link to="/legal/model-231" style={{ color: 'inherit', textDecoration: 'none' }} onMouseEnter={(e) => e.currentTarget.style.color = 'var(--accent-primary)'} onMouseLeave={(e) => e.currentTarget.style.color = 'var(--text-muted)'} >{t('footer.legal.model231')}</Link></li>
+              <li><Link to="/legal/whistleblowing" style={{ color: 'inherit', textDecoration: 'none' }} onMouseEnter={(e) => e.currentTarget.style.color = 'var(--accent-primary)'} onMouseLeave={(e) => e.currentTarget.style.color = 'var(--text-muted)'} >{t('footer.legal.whistleblowing')}</Link></li>
+              <li><Link to="/legal/quality-policy" style={{ color: 'inherit', textDecoration: 'none' }} onMouseEnter={(e) => e.currentTarget.style.color = 'var(--accent-primary)'} onMouseLeave={(e) => e.currentTarget.style.color = 'var(--text-muted)'} >{t('footer.legal.quality')}</Link></li>
             </ul>
           </div>
 

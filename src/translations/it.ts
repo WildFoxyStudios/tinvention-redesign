@@ -1,6 +1,6 @@
 export const it = {
   nav: {
-    about: "Chi siamo", services: "Cosa facciamo", domains: "Domini", units: "Unità", careers: "Career", contact: "Contatti", cta: "SCRIVICI"
+    about: "Chi siamo", services: "Cosa facciamo", domains: "Domini", units: "Unità", tech: "Tech Stack", careers: "Career", contact: "Contatti", cta: "SCRIVICI"
   },
   hero: {
     tag: "INGEGNERIZZIAMO_IL_SUCCESSO",

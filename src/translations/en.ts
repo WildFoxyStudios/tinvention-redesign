@@ -1,6 +1,6 @@
 export const en = {
   nav: {
-    about: "About", services: "Services", domains: "Domains", units: "Units", careers: "Careers", contact: "Contact", cta: "GET_IN_TOUCH"
+    about: "About", services: "Services", domains: "Domains", units: "Units", tech: "Tech Stack", careers: "Careers", contact: "Contact", cta: "GET_IN_TOUCH"
   },
   hero: {
     tag: "WE_ENGINEER_SUCCESS",
