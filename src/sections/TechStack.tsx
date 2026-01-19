@@ -1,9 +1,11 @@
 import React from 'react';
 import { useTranslation } from '../context/LanguageContext';
 import { motion } from 'framer-motion';
+import { useResponsive } from '../hooks/useResponsive';
 
 const TechStack: React.FC = () => {
   const { t } = useTranslation();
+  const { isTablet, isDesktop } = useResponsive();
 
   const groups = t('tech.groups');
   const groupKeys = Object.keys(groups);
@@ -18,7 +20,7 @@ const TechStack: React.FC = () => {
 
         <div style={{ 
           display: 'grid', 
-          gridTemplateColumns: window.innerWidth > 768 ? 'repeat(auto-fit, minmax(280px, 1fr))' : window.innerWidth > 480 ? 'repeat(2, 1fr)' : '1fr', 
+          gridTemplateColumns: isDesktop ? 'repeat(auto-fit, minmax(280px, 1fr))' : isTablet ? 'repeat(2, 1fr)' : '1fr', 
           gap: 'clamp(1rem, 2vw, 1.5rem)' 
         }}>
           {groupKeys.map((key, idx) => {

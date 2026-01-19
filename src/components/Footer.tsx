@@ -3,9 +3,11 @@ import { useTranslation } from '../context/LanguageContext';
 import { Linkedin, Facebook, Github } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Logo from './Logo';
+import { useResponsive } from '../hooks/useResponsive';
 
 const Footer: React.FC = () => {
   const { t } = useTranslation();
+  const { isMobile } = useResponsive();
 
   const handleSectionScroll = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -88,7 +90,7 @@ const Footer: React.FC = () => {
           gap: '1rem',
           color: 'var(--text-muted)',
           fontSize: '0.7rem',
-          flexDirection: window.innerWidth < 480 ? 'column' : 'row'
+          flexDirection: isMobile ? 'column' : 'row'
         }}>
           <p>{t('footer.copy')}</p>
           <div style={{ display: 'flex', gap: '2rem' }}>

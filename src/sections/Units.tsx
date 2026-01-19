@@ -2,9 +2,11 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Code2, LineChart, Cpu } from 'lucide-react';
 import { useTranslation } from '../context/LanguageContext';
+import { useResponsive } from '../hooks/useResponsive';
 
 const Units: React.FC = () => {
   const { t } = useTranslation();
+  const { isMobile, isDesktop } = useResponsive();
 
   return (
     <section id="units" style={{ padding: 'clamp(3rem, 8vw, 8rem) 0', background: 'var(--card-bg)' }}>
@@ -14,7 +16,7 @@ const Units: React.FC = () => {
           <h3 style={{ fontSize: 'clamp(1.75rem, 5vw, 2.5rem)' }}>{t('units.title')}</h3>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: window.innerWidth > 768 ? '1fr 1fr' : '1fr', gap: 'clamp(2rem, 4vw, 3rem)' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: isDesktop ? '1fr 1fr' : '1fr', gap: 'clamp(2rem, 4vw, 3rem)' }}>
           <motion.div 
             whileHover={{ y: -5 }}
             style={{ 
@@ -27,7 +29,7 @@ const Units: React.FC = () => {
             }}
           >
             <div style={{ color: 'var(--accent-primary)', marginBottom: '2rem' }}>
-              <Code2 size={window.innerWidth < 480 ? 36 : 48} />
+              <Code2 size={isMobile ? 36 : 48} />
             </div>
             <h4 style={{ fontSize: 'clamp(1.25rem, 4vw, 1.75rem)', marginBottom: '1.5rem' }}>{t('units.tailor.title')}</h4>
             <p style={{ color: 'var(--text-secondary)', lineHeight: 1.8, marginBottom: '2rem', fontSize: '0.9rem' }}>
@@ -56,7 +58,7 @@ const Units: React.FC = () => {
             }}
           >
             <div style={{ color: 'var(--accent-secondary)', marginBottom: '2rem' }}>
-              <LineChart size={window.innerWidth < 480 ? 36 : 48} />
+              <LineChart size={isMobile ? 36 : 48} />
             </div>
             <h4 style={{ fontSize: 'clamp(1.25rem, 4vw, 1.75rem)', marginBottom: '1.5rem' }}>{t('units.risk.title')}</h4>
             <p style={{ color: 'var(--text-secondary)', lineHeight: 1.8, marginBottom: '2rem', fontSize: '0.9rem' }}>

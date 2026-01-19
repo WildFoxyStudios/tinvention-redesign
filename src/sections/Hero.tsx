@@ -2,9 +2,11 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { ChevronRight } from 'lucide-react';
 import { useTranslation } from '../context/LanguageContext';
+import { useResponsive } from '../hooks/useResponsive';
 
 const Hero: React.FC = () => {
   const { t } = useTranslation();
+  const { isMobile, isDesktop } = useResponsive();
 
   return (
     <section id="home" style={{ 
@@ -25,7 +27,7 @@ const Hero: React.FC = () => {
         height: '500px',
         background: 'radial-gradient(circle, rgba(0, 242, 255, 0.05) 0%, transparent 70%)',
         zIndex: -1,
-        display: window.innerWidth > 768 ? 'block' : 'none'
+        display: isDesktop ? 'block' : 'none'
       }} />
       <div style={{
         position: 'absolute',
@@ -35,7 +37,7 @@ const Hero: React.FC = () => {
         height: '600px',
         background: 'radial-gradient(circle, rgba(112, 0, 255, 0.05) 0%, transparent 70%)',
         zIndex: -1,
-        display: window.innerWidth > 768 ? 'block' : 'none'
+        display: isDesktop ? 'block' : 'none'
       }} />
 
       <div className="container">
@@ -74,7 +76,7 @@ const Hero: React.FC = () => {
             {t('hero.desc')}
           </p>
 
-          <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', flexDirection: window.innerWidth < 480 ? 'column' : 'row' }}>
+          <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', flexDirection: isMobile ? 'column' : 'row' }}>
             <motion.button
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
@@ -92,7 +94,7 @@ const Hero: React.FC = () => {
                 border: 'none',
                 cursor: 'pointer',
                 minHeight: '44px',
-                width: window.innerWidth < 480 ? '100%' : 'auto'
+                width: isMobile ? '100%' : 'auto'
               }}
             >
               {t('hero.cta_primary')} <ChevronRight size={18} />
@@ -110,7 +112,7 @@ const Hero: React.FC = () => {
                 fontWeight: '500',
                 cursor: 'pointer',
                 minHeight: '44px',
-                width: window.innerWidth < 480 ? '100%' : 'auto',
+                width: isMobile ? '100%' : 'auto',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center'

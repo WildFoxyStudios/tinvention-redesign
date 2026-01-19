@@ -2,9 +2,11 @@ import React from 'react';
 import { useTranslation } from '../context/LanguageContext';
 import { motion } from 'framer-motion';
 import { Check } from 'lucide-react';
+import { useResponsive } from '../hooks/useResponsive';
 
 const Services: React.FC = () => {
   const { t } = useTranslation();
+  const { isMobile, isDesktop } = useResponsive();
   
   return (
     <section id="services" style={{ padding: 'clamp(3rem, 8vw, 8rem) 0', background: 'var(--card-bg)' }}>
@@ -14,7 +16,7 @@ const Services: React.FC = () => {
           <h3 style={{ fontSize: 'clamp(1.75rem, 5vw, 2.5rem)', marginBottom: '1.5rem', maxWidth: '800px' }}>{t('services.title')}</h3>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: window.innerWidth > 992 ? '1fr 1fr' : '1fr', gap: 'clamp(2rem, 4vw, 4rem)', marginBottom: 'clamp(3rem, 6vw, 6rem)' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: isDesktop ? '1fr 1fr' : '1fr', gap: 'clamp(2rem, 4vw, 4rem)', marginBottom: 'clamp(3rem, 6vw, 6rem)' }}>
           <motion.div 
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -37,7 +39,7 @@ const Services: React.FC = () => {
             }}>
               {t('about.nuances').map((nuance: string, i: number) => (
                 <div key={i} style={{ display: 'flex', gap: '1rem' }}>
-                  <Check size={window.innerWidth < 480 ? 16 : 18} style={{ color: 'var(--accent-primary)', flexShrink: 0, marginTop: '2px' }} />
+                  <Check size={isMobile ? 16 : 18} style={{ color: 'var(--accent-primary)', flexShrink: 0, marginTop: '2px' }} />
                   <span style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>{nuance}</span>
                 </div>
               ))}
@@ -97,14 +99,14 @@ const Services: React.FC = () => {
                     fontSize: '0.75rem',
                     cursor: 'pointer',
                     transition: 'all 0.3s ease',
-                    width: window.innerWidth < 480 ? '100%' : 'fit-content',
+                    width: isMobile ? '100%' : 'fit-content',
                     minHeight: '44px',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center'
                   }}>
                   {t('services.smartsourcing.cta')}
-                </button>65rem', color: 'var(--text-muted)', textDecoration: 'none', wordBreak: 'break-word
+                </button>
                 <a 
                   href={`mailto:${t('services.smartsourcing.contact_email')}`}
                   className="mono"

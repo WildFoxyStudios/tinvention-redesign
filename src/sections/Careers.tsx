@@ -2,10 +2,12 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ExternalLink, X, CheckCircle2, Star } from 'lucide-react';
 import { useTranslation } from '../context/LanguageContext';
+import { useResponsive } from '../hooks/useResponsive';
 
 const Careers: React.FC = () => {
   const [selectedJobId, setSelectedJobId] = useState<string | null>(null);
   const { t } = useTranslation();
+  const { isMobile, isDesktop } = useResponsive();
 
   const jobs = t('careers.jobs') as any[];
   const selectedJob = jobs.find(j => j.id === selectedJobId);
@@ -31,9 +33,9 @@ const Careers: React.FC = () => {
                 display: 'flex', 
                 justifyContent: 'space-between', 
                 alignItems: 'center',
-                flexDirection: window.innerWidth < 480 ? 'column' : 'row',
-                gap: window.innerWidth < 480 ? '1rem' : '0',
-                textAlign: window.innerWidth < 480 ? 'center' : 'left',
+                flexDirection: isMobile ? 'column' : 'row',
+                gap: isMobile ? '1rem' : '0',
+                textAlign: isMobile ? 'center' : 'left',
                 transition: 'all 0.3s ease',
                 cursor: 'pointer'
               }}
@@ -42,7 +44,7 @@ const Careers: React.FC = () => {
             >
               <div>
                 <h4 style={{ fontSize: 'clamp(1rem, 3vw, 1.2rem)', marginBottom: '0.4rem', color: 'var(--text-primary)' }}>{job.title}</h4>
-                <div style={{ display: 'flex', gap: '1rem', color: 'var(--text-muted)', fontSize: '0.75rem', flexWrap: 'wrap', justifyContent: window.innerWidth < 480 ? 'center' : 'flex-start' }} className="mono">
+                <div style={{ display: 'flex', gap: '1rem', color: 'var(--text-muted)', fontSize: '0.75rem', flexWrap: 'wrap', justifyContent: isMobile ? 'center' : 'flex-start' }} className="mono">
                   <span style={{ color: 'var(--accent-primary)' }}>{job.type}</span>
                   <span>•</span>
                   <span>{job.location}</span>
@@ -50,7 +52,7 @@ const Careers: React.FC = () => {
               </div>
               <div style={{ color: 'var(--accent-primary)', display: 'flex', alignItems: 'center', gap: '0.5rem', minHeight: '44px' }}>
                 <span className="mono" style={{ fontSize: '0.7rem' }}>{t('careers.view_details')}</span>
-                <ExternalLink size={window.innerWidth < 480 ? 14 : 16} />
+                <ExternalLink size={isMobile ? 14 : 16} />
               </div>
             </motion.div>
           ))}
@@ -98,7 +100,7 @@ const Careers: React.FC = () => {
                   onClick={() => setSelectedJobId(null)}
                   style={{ position: 'absolute', top: 'clamp(0.75rem, 2vw, 1.5rem)', right: 'clamp(0.75rem, 2vw, 1.5rem)', color: 'var(--text-muted)', background: 'none', border: 'none', cursor: 'pointer', minHeight: '44px', minWidth: '44px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
                 >
-                  <X size={window.innerWidth < 480 ? 20 : 24} />
+                  <X size={isMobile ? 20 : 24} />
                 </button>
 
                 <h4 className="mono" style={{ color: 'var(--accent-primary)', fontSize: '0.7rem', marginBottom: '1rem' }}>[STATUS: ACTIVE_POSTING]</h4>
@@ -112,13 +114,13 @@ const Careers: React.FC = () => {
                   <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', lineHeight: '1.8' }}>{selectedJob.description}</p>
                 </div>
 
-                <div style={{ display: 'grid', gridTemplateColumns: window.innerWidth > 600 ? 'minmax(0, 1.2fr) minmax(0, 1fr)' : '1fr', gap: 'clamp(2rem, 4vw, 4rem)' }}>
+                <div style={{ display: 'grid', gridTemplateColumns: isDesktop ? 'minmax(0, 1.2fr) minmax(0, 1fr)' : '1fr', gap: 'clamp(2rem, 4vw, 4rem)' }}>
                   <div>
                     <h5 className="mono" style={{ color: 'var(--accent-primary)', fontSize: '0.65rem', textTransform: 'uppercase', marginBottom: '1.5rem', opacity: 0.8 }}>{t('careers.labels.requirements')}</h5>
                     <ul style={{ listStyle: 'none', padding: 0 }}>
                       {selectedJob.requirements.map((req: string, i: number) => (
                         <li key={i} style={{ display: 'flex', gap: '1rem', marginBottom: '1rem', fontSize: '0.85rem' }}>
-                          <CheckCircle2 size={window.innerWidth < 480 ? 16 : 18} style={{ color: 'var(--accent-primary)', marginTop: '2px', flexShrink: 0 }} />
+                          <CheckCircle2 size={isMobile ? 16 : 18} style={{ color: 'var(--accent-primary)', marginTop: '2px', flexShrink: 0 }} />
                           <span style={{ color: 'var(--text-secondary)', lineHeight: '1.4' }}>{req}</span>
                         </li>
                       ))}
@@ -137,7 +139,7 @@ const Careers: React.FC = () => {
                   </div>
                 </div>
 
-                <div style={{ marginTop: '2rem', display: 'grid', gridTemplateColumns: window.innerWidth > 480 ? '1fr 1fr' : '1fr', gap: '1.5rem' }}>
+                <div style={{ marginTop: '2rem', display: 'grid', gridTemplateColumns: !isMobile ? '1fr 1fr' : '1fr', gap: '1.5rem' }}>
                   <button 
                     className="mono apply-btn" 
                     onClick={() => window.location.href = `mailto:recruiting@tinvention.net?subject=${encodeURIComponent(selectedJob.title)}`}
@@ -179,7 +181,7 @@ const Careers: React.FC = () => {
           )}
         </AnimatePresence>
 
-        <div style={{ marginBottom: 'clamp(2rem, 5vw, 5rem)', display: 'grid', gridTemplateColumns: window.innerWidth > 768 ? '1fr 1fr' : '1fr', gap: 'clamp(2rem, 4vw, 4rem)', alignItems: 'center' }}>
+        <div style={{ marginBottom: 'clamp(2rem, 5vw, 5rem)', display: 'grid', gridTemplateColumns: isDesktop ? '1fr 1fr' : '1fr', gap: 'clamp(2rem, 4vw, 4rem)', alignItems: 'center' }}>
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
