@@ -2,6 +2,7 @@ import React from 'react';
 import { useTranslation } from '../context/LanguageContext';
 import { Linkedin, Facebook, Github } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import Logo from './Logo';
 
 const Footer: React.FC = () => {
   const { t } = useTranslation();
@@ -15,8 +16,8 @@ const Footer: React.FC = () => {
       <div className="container">
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '4rem', marginBottom: '4rem' }}>
           <div>
-            <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontWeight: 'bold', fontSize: '1.25rem', marginBottom: '1.5rem', color: 'inherit' }}>
-              <span className="mono">tinvention<span style={{ color: 'var(--accent-primary)' }}>.net</span></span>
+            <Link to="/" style={{ display: 'block', marginBottom: '1.5rem', color: 'var(--text-primary)' }}>
+              <Logo height={20} />
             </Link>
             <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', lineHeight: 1.6, marginBottom: '2rem' }}>
               Realizing technological inventions for your business since inception with quality and human focus.

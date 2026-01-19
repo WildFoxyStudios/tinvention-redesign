@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { Link } from 'react-router-dom';
-import { Terminal, Menu, X, Globe, Sun, Moon } from 'lucide-react';
+import { Menu, X, Globe, Sun, Moon } from 'lucide-react';
 import { useTranslation } from '../context/LanguageContext';
 import { useTheme } from '../context/ThemeContext';
+import Logo from './Logo';
 
 const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -40,9 +41,8 @@ const Navbar: React.FC = () => {
       }}
     >
       <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-        <Link to="/" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontWeight: 'bold', fontSize: '1.25rem' }}>
-          <Terminal strokeWidth={2.5} size={24} style={{ color: 'var(--accent-primary)' }} />
-          <span className="mono">tinvention<span style={{ color: 'var(--accent-primary)' }}>.net</span></span>
+        <Link to="/" style={{ display: 'flex', alignItems: 'center', color: 'var(--text-primary)' }}>
+          <Logo height={isScrolled ? 22 : 28} />
         </Link>
 
         {/* Desktop Menu */}
