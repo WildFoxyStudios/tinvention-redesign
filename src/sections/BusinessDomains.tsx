@@ -29,20 +29,20 @@ const BusinessDomains: React.FC = () => {
   const domainItems = t('domains.items') as { id: string, name: string, desc: string }[];
 
   return (
-    <section id="domains" style={{ padding: '8rem 0', background: 'var(--bg-color)' }}>
+    <section id="domains" style={{ padding: 'clamp(3rem, 8vw, 8rem) 0', background: 'var(--bg-color)' }}>
       <div className="container">
-        <div style={{ marginBottom: '4rem' }}>
-          <h2 className="mono" style={{ color: 'var(--accent-primary)', fontSize: '1rem', marginBottom: '1rem' }}>[{t('domains.tag')}]</h2>
-          <h3 style={{ fontSize: '2.5rem' }}>{t('domains.title')}</h3>
-          <p style={{ color: 'var(--text-secondary)', marginTop: '1rem', maxWidth: '800px', lineHeight: '1.6' }}>
+        <div style={{ marginBottom: 'clamp(2rem, 5vw, 4rem)' }}>
+          <h2 className="mono" style={{ color: 'var(--accent-primary)', fontSize: '0.8rem', marginBottom: '1rem' }}>[{t('domains.tag')}]</h2>
+          <h3 style={{ fontSize: 'clamp(1.75rem, 5vw, 2.5rem)' }}>{t('domains.title')}</h3>
+          <p style={{ color: 'var(--text-secondary)', marginTop: '1rem', maxWidth: '800px', lineHeight: '1.6', fontSize: '0.95rem' }}>
             {t('domains.desc')}
           </p>
         </div>
 
         <div style={{ 
           display: 'grid', 
-          gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', 
-          gap: '1.2rem' 
+          gridTemplateColumns: window.innerWidth > 768 ? 'repeat(auto-fit, minmax(220px, 1fr))' : window.innerWidth > 480 ? 'repeat(2, 1fr)' : '1fr', 
+          gap: 'clamp(0.8rem, 2vw, 1.2rem)' 
         }}>
           {domainItems.map((domain, idx) => {
             const Icon = iconMap[domain.id] || Building2;
@@ -61,7 +61,7 @@ const BusinessDomains: React.FC = () => {
                     y: -2 
                   }}
                   style={{ 
-                    padding: '2rem 1.5rem', 
+                    padding: 'clamp(1.25rem, 3vw, 2rem) 1.25rem', 
                     background: isActive ? 'rgba(0, 242, 255, 0.05)' : 'var(--card-bg)', 
                     border: '1px solid',
                     borderColor: isActive ? 'var(--accent-primary)' : 'var(--border-color)', 
@@ -74,7 +74,8 @@ const BusinessDomains: React.FC = () => {
                     textAlign: 'center',
                     cursor: 'pointer',
                     position: 'relative',
-                    overflow: 'hidden'
+                    overflow: 'hidden',
+                    minHeight: window.innerWidth < 480 ? 'auto' : '140px'
                   }}
                 >
                   {isActive && (
@@ -95,7 +96,7 @@ const BusinessDomains: React.FC = () => {
                     marginBottom: '1rem',
                     transition: 'color 0.3s ease'
                   }}>
-                    <Icon size={32} strokeWidth={1.5} />
+                    <Icon size={window.innerWidth < 480 ? 24 : 32} strokeWidth={1.5} />
                   </div>
                   <h4 className="mono" style={{ 
                     fontSize: '0.9rem', 

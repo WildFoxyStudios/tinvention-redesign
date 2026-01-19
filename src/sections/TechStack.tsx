@@ -9,17 +9,17 @@ const TechStack: React.FC = () => {
   const groupKeys = Object.keys(groups);
 
   return (
-    <section id="tech" style={{ padding: '8rem 0', background: 'var(--bg-color)' }}>
+    <section id="tech" style={{ padding: 'clamp(3rem, 8vw, 8rem) 0', background: 'var(--bg-color)' }}>
       <div className="container">
-        <div style={{ marginBottom: '4rem' }}>
-          <h2 className="mono" style={{ color: 'var(--accent-primary)', fontSize: '1rem', marginBottom: '1rem' }}>[{t('tech.tag')}]</h2>
-          <h3 style={{ fontSize: '2.5rem' }}>{t('tech.title')}</h3>
+        <div style={{ marginBottom: 'clamp(2rem, 5vw, 4rem)' }}>
+          <h2 className="mono" style={{ color: 'var(--accent-primary)', fontSize: '0.8rem', marginBottom: '1rem' }}>[{t('tech.tag')}]</h2>
+          <h3 style={{ fontSize: 'clamp(1.75rem, 5vw, 2.5rem)' }}>{t('tech.title')}</h3>
         </div>
 
         <div style={{ 
           display: 'grid', 
-          gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', 
-          gap: '1.5rem' 
+          gridTemplateColumns: window.innerWidth > 768 ? 'repeat(auto-fit, minmax(280px, 1fr))' : window.innerWidth > 480 ? 'repeat(2, 1fr)' : '1fr', 
+          gap: 'clamp(1rem, 2vw, 1.5rem)' 
         }}>
           {groupKeys.map((key, idx) => {
             const group = groups[key];
@@ -30,20 +30,20 @@ const TechStack: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: idx * 0.1 }}
                 style={{ 
-                  padding: '2rem', 
+                  padding: 'clamp(1.5rem, 3vw, 2rem)', 
                   background: 'var(--card-bg)', 
                   border: '1px solid var(--border-color)', 
                   borderRadius: '12px',
                   display: 'flex',
                   flexDirection: 'column',
-                  gap: '1.5rem'
+                  gap: 'clamp(1rem, 2vw, 1.5rem)'
                 }}
               >
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
                   <div style={{ width: '8px', height: '8px', background: 'var(--accent-primary)', borderRadius: '2px' }} />
                   <h4 className="mono" style={{ 
                     color: 'var(--text-primary)', 
-                    fontSize: '0.9rem', 
+                    fontSize: 'clamp(0.8rem, 2vw, 0.9rem)', 
                     letterSpacing: '0.1em',
                     textTransform: 'uppercase'
                   }}>
@@ -57,13 +57,14 @@ const TechStack: React.FC = () => {
                       key={i} 
                       className="mono" 
                       style={{ 
-                        padding: '6px 12px', 
+                        padding: 'clamp(0.4rem, 1vw, 0.5rem) clamp(0.6rem, 1.5vw, 0.75rem)', 
                         background: 'rgba(255, 255, 255, 0.03)', 
                         border: '1px solid var(--border-color)', 
                         borderRadius: '4px',
-                        fontSize: '0.75rem',
+                        fontSize: 'clamp(0.65rem, 1.5vw, 0.75rem)',
                         color: 'var(--text-secondary)',
-                        transition: 'all 0.2s ease'
+                        transition: 'all 0.2s ease',
+                        whiteSpace: 'nowrap'
                       }}
                       onMouseEnter={(e) => {
                         e.currentTarget.style.color = 'var(--accent-primary)';

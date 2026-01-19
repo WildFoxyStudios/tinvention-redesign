@@ -12,11 +12,11 @@ const Hero: React.FC = () => {
       display: 'flex', 
       flexDirection: 'column', 
       justifyContent: 'center',
-      paddingTop: '80px',
+      paddingTop: 'clamp(60px, 15vw, 80px)',
       position: 'relative',
       overflow: 'hidden'
     }}>
-      {/* Background Glow */}
+      {/* Background Glow - Hidden on mobile */}
       <div style={{
         position: 'absolute',
         top: '20%',
@@ -24,7 +24,8 @@ const Hero: React.FC = () => {
         width: '500px',
         height: '500px',
         background: 'radial-gradient(circle, rgba(0, 242, 255, 0.05) 0%, transparent 70%)',
-        zIndex: -1
+        zIndex: -1,
+        display: window.innerWidth > 768 ? 'block' : 'none'
       }} />
       <div style={{
         position: 'absolute',
@@ -33,7 +34,8 @@ const Hero: React.FC = () => {
         width: '600px',
         height: '600px',
         background: 'radial-gradient(circle, rgba(112, 0, 255, 0.05) 0%, transparent 70%)',
-        zIndex: -1
+        zIndex: -1,
+        display: window.innerWidth > 768 ? 'block' : 'none'
       }} />
 
       <div className="container">
@@ -64,15 +66,15 @@ const Hero: React.FC = () => {
           </h1>
 
           <p style={{ 
-            fontSize: '1.2rem', 
+            fontSize: 'clamp(0.95rem, 3vw, 1.2rem)', 
             color: 'var(--text-secondary)', 
             maxWidth: '600px',
-            marginBottom: '3rem'
+            marginBottom: '2rem'
           }}>
             {t('hero.desc')}
           </p>
 
-          <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+          <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', flexDirection: window.innerWidth < 480 ? 'column' : 'row' }}>
             <motion.button
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
@@ -80,14 +82,17 @@ const Hero: React.FC = () => {
               style={{
                 background: 'var(--accent-primary)',
                 color: '#000',
-                padding: '1rem 2rem',
+                padding: '0.875rem 1.5rem',
                 borderRadius: '4px',
                 fontWeight: 'bold',
                 display: 'flex',
                 alignItems: 'center',
+                justifyContent: 'center',
                 gap: '0.5rem',
                 border: 'none',
-                cursor: 'pointer'
+                cursor: 'pointer',
+                minHeight: '44px',
+                width: window.innerWidth < 480 ? '100%' : 'auto'
               }}
             >
               {t('hero.cta_primary')} <ChevronRight size={18} />
@@ -100,10 +105,15 @@ const Hero: React.FC = () => {
                 border: '1px solid var(--border-color)',
                 background: 'transparent',
                 color: 'var(--text-primary)',
-                padding: '1rem 2rem',
+                padding: '0.875rem 1.5rem',
                 borderRadius: '4px',
                 fontWeight: '500',
-                cursor: 'pointer'
+                cursor: 'pointer',
+                minHeight: '44px',
+                width: window.innerWidth < 480 ? '100%' : 'auto',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
               }}
             >
               {t('hero.cta_secondary')}
@@ -117,13 +127,15 @@ const Hero: React.FC = () => {
            animate={{ opacity: 1, scale: 1 }}
            transition={{ delay: 0.4, duration: 1 }}
            style={{
-             marginTop: '5rem',
+             marginTop: 'clamp(2rem, 5vw, 5rem)',
              background: 'var(--card-bg)',
              border: '1px solid var(--border-color)', 
              borderRadius: '8px',
-             padding: '1.5rem',
+             padding: 'clamp(1rem, 3vw, 1.5rem)',
              boxShadow: 'var(--shadow-premium)',
-             position: 'relative'
+             position: 'relative',
+             overflowX: 'auto',
+             WebkitOverflowScrolling: 'touch'
            }}
         >
           <div style={{ display: 'flex', gap: '6px', marginBottom: '1rem' }}>
@@ -131,7 +143,7 @@ const Hero: React.FC = () => {
             <div style={{ width: '10px', height: '10px', background: '#ffbd2e', borderRadius: '50%' }} />
             <div style={{ width: '10px', height: '10px', background: '#27c93f', borderRadius: '50%' }} />
           </div>
-          <div className="mono" style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>
+          <div className="mono" style={{ fontSize: 'clamp(0.75rem, 2vw, 0.85rem)', color: 'var(--text-muted)', wordBreak: 'break-word' }}>
             <div><span style={{ color: 'var(--accent-primary)' }}>$</span> tinvention info --status</div>
             <div style={{ color: 'var(--text-secondary)', marginTop: '0.5rem' }}>
               &gt; Initializing high-performance engine...<br />

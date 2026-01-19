@@ -7,40 +7,40 @@ const Methodology: React.FC = () => {
   const { t } = useTranslation();
 
   return (
-    <section id="method" style={{ padding: '8rem 0', background: 'var(--bg-color)' }}>
+    <section id="method" style={{ padding: 'clamp(3rem, 8vw, 8rem) 0', background: 'var(--bg-color)' }}>
       <div className="container">
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '5rem', alignItems: 'center' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: window.innerWidth > 768 ? '1fr 1fr' : '1fr', gap: 'clamp(2rem, 4vw, 5rem)', alignItems: 'center' }}>
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="mono" style={{ color: 'var(--accent-primary)', fontSize: '1rem', marginBottom: '1rem' }}>[{t('methodology.tag')}]</h2>
-            <h3 style={{ fontSize: '2.5rem', marginBottom: '1.5rem' }}>{t('methodology.title')}</h3>
-            <p style={{ color: 'var(--text-secondary)', fontSize: '1.1rem', marginBottom: '2rem', lineHeight: '1.8' }}>
+            <h2 className="mono" style={{ color: 'var(--accent-primary)', fontSize: '0.8rem', marginBottom: '1rem' }}>[{t('methodology.tag')}]</h2>
+            <h3 style={{ fontSize: 'clamp(1.75rem, 5vw, 2.5rem)', marginBottom: '1.5rem' }}>{t('methodology.title')}</h3>
+            <p style={{ color: 'var(--text-secondary)', fontSize: 'clamp(0.95rem, 2vw, 1.1rem)', marginBottom: '2rem', lineHeight: '1.8' }}>
               {t('methodology.training.desc')}
             </p>
             
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
-              <div style={{ display: 'flex', gap: '1.5rem' }}>
-                <div style={{ color: 'var(--accent-primary)', flexShrink: 0 }}><GraduationCap size={32} strokeWidth={1.5} /></div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 'clamp(1.5rem, 3vw, 2rem)' }}>
+              <div style={{ display: 'flex', gap: 'clamp(1rem, 2vw, 1.5rem)' }}>
+                <div style={{ color: 'var(--accent-primary)', flexShrink: 0 }}><GraduationCap size={window.innerWidth < 480 ? 24 : 32} strokeWidth={1.5} /></div>
                 <div>
-                  <h4 className="mono" style={{ fontSize: '1rem', marginBottom: '0.25rem', color: 'var(--text-primary)' }}>Politecnico di Milano</h4>
-                  <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>{t('methodology.training.partners')}</p>
+                  <h4 className="mono" style={{ fontSize: 'clamp(0.9rem, 2vw, 1rem)', marginBottom: '0.25rem', color: 'var(--text-primary)' }}>Politecnico di Milano</h4>
+                  <p style={{ color: 'var(--text-muted)', fontSize: '0.8rem' }}>{t('methodology.training.partners')}</p>
                 </div>
               </div>
-              <div style={{ display: 'flex', gap: '1.5rem' }}>
-                <div style={{ color: 'var(--accent-primary)', flexShrink: 0 }}><Microscope size={32} strokeWidth={1.5} /></div>
+              <div style={{ display: 'flex', gap: 'clamp(1rem, 2vw, 1.5rem)' }}>
+                <div style={{ color: 'var(--accent-primary)', flexShrink: 0 }}><Microscope size={window.innerWidth < 480 ? 24 : 32} strokeWidth={1.5} /></div>
                 <div>
-                  <h4 className="mono" style={{ fontSize: '1rem', marginBottom: '0.25rem', color: 'var(--text-primary)' }}>CEFRIEL</h4>
-                  <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>ICT Applied Research Center of Excellence.</p>
+                  <h4 className="mono" style={{ fontSize: 'clamp(0.9rem, 2vw, 1rem)', marginBottom: '0.25rem', color: 'var(--text-primary)' }}>CEFRIEL</h4>
+                  <p style={{ color: 'var(--text-muted)', fontSize: '0.8rem' }}>ICT Applied Research Center of Excellence.</p>
                 </div>
               </div>
-              <div style={{ display: 'flex', gap: '1.5rem' }}>
-                <div style={{ color: 'var(--accent-primary)', flexShrink: 0 }}><Award size={32} strokeWidth={1.5} /></div>
+              <div style={{ display: 'flex', gap: 'clamp(1rem, 2vw, 1.5rem)' }}>
+                <div style={{ color: 'var(--accent-primary)', flexShrink: 0 }}><Award size={window.innerWidth < 480 ? 24 : 32} strokeWidth={1.5} /></div>
                 <div>
-                  <h4 className="mono" style={{ fontSize: '1rem', marginBottom: '0.25rem', color: 'var(--text-primary)' }}>{t('about.stats.ethics.title')}</h4>
-                  <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem' }}>{t('about.stats.ethics.desc')}</p>
+                  <h4 className="mono" style={{ fontSize: 'clamp(0.9rem, 2vw, 1rem)', marginBottom: '0.25rem', color: 'var(--text-primary)' }}>{t('about.stats.ethics.title')}</h4>
+                  <p style={{ color: 'var(--text-muted)', fontSize: '0.8rem' }}>{t('about.stats.ethics.desc')}</p>
                 </div>
               </div>
             </div>
@@ -52,7 +52,7 @@ const Methodology: React.FC = () => {
             transition={{ duration: 0.6 }}
             style={{ 
               background: 'var(--card-bg)', 
-              padding: '3rem', 
+              padding: 'clamp(1.5rem, 4vw, 3rem)', 
               borderRadius: '16px', 
               border: '1px solid var(--border-color)',
               position: 'relative',
@@ -70,9 +70,9 @@ const Methodology: React.FC = () => {
               background: 'linear-gradient(90deg, var(--accent-primary), var(--accent-secondary))',
             }} />
 
-            <div className="mono" style={{ color: 'var(--accent-primary)', fontSize: '0.75rem', marginBottom: '2.5rem', letterSpacing: '0.1em' }}>// ACADEMY_CORE_MODULES.sh</div>
+            <div className="mono" style={{ color: 'var(--accent-primary)', fontSize: '0.7rem', marginBottom: '2rem', letterSpacing: '0.1em' }}>// ACADEMY_CORE_MODULES.sh</div>
             
-            <div style={{ display: 'grid', gap: '1.5rem' }}>
+            <div style={{ display: 'grid', gap: '1rem' }}>
               {(t('careers.questions') ? [
                 { id: '01', title: 'High-Level Engineering', desc: 'Java, Parallelism & Distribution' },
                 { id: '02', title: 'Data Architecture', desc: 'Kafka, Spark & Big Data Ecosystems' },
@@ -87,8 +87,8 @@ const Methodology: React.FC = () => {
                   whileHover={{ x: 10 }}
                   style={{ 
                     display: 'flex', 
-                    gap: '1.5rem', 
-                    padding: '1.2rem', 
+                    gap: '1rem', 
+                    padding: '1rem', 
                     background: 'rgba(255,255,255,0.02)', 
                     border: '1px solid var(--border-color)', 
                     borderRadius: '8px', 
@@ -96,7 +96,7 @@ const Methodology: React.FC = () => {
                   }}
                   className="glow-on-hover"
                 >
-                  <span className="mono" style={{ color: 'var(--accent-primary)', fontSize: '0.8rem', opacity: 0.7 }}>{module.id}</span>
+                  <span className="mono" style={{ color: 'var(--accent-primary)', fontSize: '0.75rem', opacity: 0.7, flexShrink: 0 }}>{module.id}</span>
                   <div>
                     <h5 className="mono" style={{ fontSize: '0.9rem', marginBottom: '0.2rem', color: 'var(--text-primary)' }}>{module.title}</h5>
                     <p style={{ color: 'var(--text-muted)', fontSize: '0.75rem' }}>{module.desc}</p>

@@ -11,11 +11,11 @@ const Careers: React.FC = () => {
   const selectedJob = jobs.find(j => j.id === selectedJobId);
 
   return (
-    <section id="careers" style={{ padding: '8rem 0', background: 'var(--card-bg)' }}>
+    <section id="careers" style={{ padding: 'clamp(3rem, 8vw, 8rem) 0', background: 'var(--card-bg)' }}>
       <div className="container">
-        <div style={{ marginBottom: '4rem' }}>
-          <h2 className="mono" style={{ color: 'var(--accent-primary)', fontSize: '1rem', marginBottom: '1rem' }}>[{t('careers.tag')}]</h2>
-          <h3 style={{ fontSize: '2.5rem' }}>{t('careers.title')}</h3>
+        <div style={{ marginBottom: 'clamp(2rem, 5vw, 4rem)' }}>
+          <h2 className="mono" style={{ color: 'var(--accent-primary)', fontSize: '0.8rem', marginBottom: '1rem' }}>[{t('careers.tag')}]</h2>
+          <h3 style={{ fontSize: 'clamp(1.75rem, 5vw, 2.5rem)' }}>{t('careers.title')}</h3>
         </div>
 
         <div style={{ border: '1px solid var(--border-color)', borderRadius: '12px', overflow: 'hidden', background: 'var(--bg-color)' }}>
@@ -26,11 +26,14 @@ const Careers: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.1 }}
               style={{ 
-                padding: '2rem', 
+                padding: 'clamp(1.5rem, 3vw, 2rem)', 
                 borderBottom: i !== jobs.length - 1 ? '1px solid var(--border-color)' : 'none', 
                 display: 'flex', 
                 justifyContent: 'space-between', 
                 alignItems: 'center',
+                flexDirection: window.innerWidth < 480 ? 'column' : 'row',
+                gap: window.innerWidth < 480 ? '1rem' : '0',
+                textAlign: window.innerWidth < 480 ? 'center' : 'left',
                 transition: 'all 0.3s ease',
                 cursor: 'pointer'
               }}
@@ -38,16 +41,16 @@ const Careers: React.FC = () => {
               onClick={() => setSelectedJobId(job.id)}
             >
               <div>
-                <h4 style={{ fontSize: '1.2rem', marginBottom: '0.4rem', color: 'var(--text-primary)' }}>{job.title}</h4>
-                <div style={{ display: 'flex', gap: '1rem', color: 'var(--text-muted)', fontSize: '0.8rem' }} className="mono">
+                <h4 style={{ fontSize: 'clamp(1rem, 3vw, 1.2rem)', marginBottom: '0.4rem', color: 'var(--text-primary)' }}>{job.title}</h4>
+                <div style={{ display: 'flex', gap: '1rem', color: 'var(--text-muted)', fontSize: '0.75rem', flexWrap: 'wrap', justifyContent: window.innerWidth < 480 ? 'center' : 'flex-start' }} className="mono">
                   <span style={{ color: 'var(--accent-primary)' }}>{job.type}</span>
                   <span>•</span>
                   <span>{job.location}</span>
                 </div>
               </div>
-              <div style={{ color: 'var(--accent-primary)', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                <span className="mono" style={{ fontSize: '0.75rem' }}>{t('careers.view_details')}</span>
-                <ExternalLink size={16} />
+              <div style={{ color: 'var(--accent-primary)', display: 'flex', alignItems: 'center', gap: '0.5rem', minHeight: '44px' }}>
+                <span className="mono" style={{ fontSize: '0.7rem' }}>{t('careers.view_details')}</span>
+                <ExternalLink size={window.innerWidth < 480 ? 14 : 16} />
               </div>
             </motion.div>
           ))}
@@ -66,7 +69,7 @@ const Careers: React.FC = () => {
               display: 'flex', 
               alignItems: 'center', 
               justifyContent: 'center',
-              padding: '1.5rem'
+              padding: 'clamp(1rem, 3vw, 1.5rem)'
             }}>
               <motion.div 
                 initial={{ opacity: 0 }} 
@@ -85,7 +88,7 @@ const Careers: React.FC = () => {
                   background: 'var(--card-bg)', 
                   border: '1px solid var(--border-color)', 
                   borderRadius: '16px', 
-                  padding: '3rem',
+                  padding: 'clamp(1.5rem, 4vw, 3rem)',
                   position: 'relative',
                   maxHeight: '85vh',
                   overflowY: 'auto'
@@ -93,39 +96,39 @@ const Careers: React.FC = () => {
               >
                 <button 
                   onClick={() => setSelectedJobId(null)}
-                  style={{ position: 'absolute', top: '1.5rem', right: '1.5rem', color: 'var(--text-muted)', background: 'none', border: 'none', cursor: 'pointer' }}
+                  style={{ position: 'absolute', top: 'clamp(0.75rem, 2vw, 1.5rem)', right: 'clamp(0.75rem, 2vw, 1.5rem)', color: 'var(--text-muted)', background: 'none', border: 'none', cursor: 'pointer', minHeight: '44px', minWidth: '44px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
                 >
-                  <X size={24} />
+                  <X size={window.innerWidth < 480 ? 20 : 24} />
                 </button>
 
-                <h4 className="mono" style={{ color: 'var(--accent-primary)', fontSize: '0.8rem', marginBottom: '1rem' }}>[STATUS: ACTIVE_POSTING]</h4>
-                <h3 style={{ fontSize: '2.5rem', marginBottom: '0.75rem', fontWeight: 'bold' }}>{selectedJob.title}</h3>
-                <div style={{ color: 'var(--text-muted)', fontSize: '0.9rem', marginBottom: '3rem' }} className="mono">
+                <h4 className="mono" style={{ color: 'var(--accent-primary)', fontSize: '0.7rem', marginBottom: '1rem' }}>[STATUS: ACTIVE_POSTING]</h4>
+                <h3 style={{ fontSize: 'clamp(1.75rem, 5vw, 2.5rem)', marginBottom: '0.75rem', fontWeight: 'bold' }}>{selectedJob.title}</h3>
+                <div style={{ color: 'var(--text-muted)', fontSize: '0.8rem', marginBottom: '2rem' }} className="mono">
                   {selectedJob.type} // {selectedJob.location}
                 </div>
 
-                <div style={{ marginBottom: '3rem' }}>
-                  <h5 className="mono" style={{ color: 'var(--accent-primary)', fontSize: '0.7rem', textTransform: 'uppercase', marginBottom: '1rem', opacity: 0.8 }}>{t('careers.labels.description')}</h5>
-                  <p style={{ color: 'var(--text-secondary)', fontSize: '1rem', lineHeight: '1.8' }}>{selectedJob.description}</p>
+                <div style={{ marginBottom: '2rem' }}>
+                  <h5 className="mono" style={{ color: 'var(--accent-primary)', fontSize: '0.65rem', textTransform: 'uppercase', marginBottom: '1rem', opacity: 0.8 }}>{t('careers.labels.description')}</h5>
+                  <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', lineHeight: '1.8' }}>{selectedJob.description}</p>
                 </div>
 
-                <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1.2fr) minmax(0, 1fr)', gap: '4rem' }}>
+                <div style={{ display: 'grid', gridTemplateColumns: window.innerWidth > 600 ? 'minmax(0, 1.2fr) minmax(0, 1fr)' : '1fr', gap: 'clamp(2rem, 4vw, 4rem)' }}>
                   <div>
-                    <h5 className="mono" style={{ color: 'var(--accent-primary)', fontSize: '0.7rem', textTransform: 'uppercase', marginBottom: '1.5rem', opacity: 0.8 }}>{t('careers.labels.requirements')}</h5>
+                    <h5 className="mono" style={{ color: 'var(--accent-primary)', fontSize: '0.65rem', textTransform: 'uppercase', marginBottom: '1.5rem', opacity: 0.8 }}>{t('careers.labels.requirements')}</h5>
                     <ul style={{ listStyle: 'none', padding: 0 }}>
                       {selectedJob.requirements.map((req: string, i: number) => (
-                        <li key={i} style={{ display: 'flex', gap: '1rem', marginBottom: '1rem', fontSize: '0.9rem' }}>
-                          <CheckCircle2 size={18} style={{ color: 'var(--accent-primary)', marginTop: '2px', flexShrink: 0 }} />
+                        <li key={i} style={{ display: 'flex', gap: '1rem', marginBottom: '1rem', fontSize: '0.85rem' }}>
+                          <CheckCircle2 size={window.innerWidth < 480 ? 16 : 18} style={{ color: 'var(--accent-primary)', marginTop: '2px', flexShrink: 0 }} />
                           <span style={{ color: 'var(--text-secondary)', lineHeight: '1.4' }}>{req}</span>
                         </li>
                       ))}
                     </ul>
                   </div>
                   <div>
-                    <h5 className="mono" style={{ color: 'var(--accent-primary)', fontSize: '0.7rem', textTransform: 'uppercase', marginBottom: '1.5rem', opacity: 0.8 }}>{t('careers.labels.plus')}</h5>
+                    <h5 className="mono" style={{ color: 'var(--accent-primary)', fontSize: '0.65rem', textTransform: 'uppercase', marginBottom: '1.5rem', opacity: 0.8 }}>{t('careers.labels.plus')}</h5>
                     <ul style={{ listStyle: 'none', padding: 0 }}>
                       {selectedJob.plus.map((plus: string, i: number) => (
-                        <li key={i} style={{ display: 'flex', gap: '1rem', marginBottom: '1rem', fontSize: '0.9rem' }}>
+                        <li key={i} style={{ display: 'flex', gap: '1rem', marginBottom: '1rem', fontSize: '0.85rem' }}>
                           <Star size={16} style={{ color: 'var(--accent-primary)', marginTop: '3px', flexShrink: 0, opacity: 0.6 }} />
                           <span style={{ color: 'var(--text-secondary)', lineHeight: '1.4' }}>{plus}</span>
                         </li>
@@ -134,19 +137,23 @@ const Careers: React.FC = () => {
                   </div>
                 </div>
 
-                <div style={{ marginTop: '4rem', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem' }}>
+                <div style={{ marginTop: '2rem', display: 'grid', gridTemplateColumns: window.innerWidth > 480 ? '1fr 1fr' : '1fr', gap: '1.5rem' }}>
                   <button 
                     className="mono apply-btn" 
                     onClick={() => window.location.href = `mailto:recruiting@tinvention.net?subject=${encodeURIComponent(selectedJob.title)}`}
                     style={{ 
                       background: 'var(--accent-primary)', 
                       color: 'var(--bg-color)', 
-                      padding: '1.2rem', 
+                      padding: '0.875rem 1.5rem', 
                       borderRadius: '8px', 
                       fontWeight: 'bold',
                       border: 'none',
                       cursor: 'pointer',
-                      fontSize: '0.9rem'
+                      fontSize: '0.8rem',
+                      minHeight: '44px',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center'
                     }}
                   >
                     {t('careers.apply')}
@@ -155,10 +162,14 @@ const Careers: React.FC = () => {
                     border: '1px solid var(--border-color)', 
                     background: 'transparent',
                     color: 'var(--text-primary)', 
-                    padding: '1.2rem', 
+                    padding: '0.875rem 1.5rem', 
                     borderRadius: '8px',
                     cursor: 'pointer',
-                    fontSize: '0.9rem'
+                    fontSize: '0.8rem',
+                    minHeight: '44px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center'
                   }}>
                     {t('careers.close')}
                   </button>
@@ -168,18 +179,18 @@ const Careers: React.FC = () => {
           )}
         </AnimatePresence>
 
-        <div style={{ marginBottom: '5rem', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4rem', alignItems: 'center' }}>
+        <div style={{ marginBottom: 'clamp(2rem, 5vw, 5rem)', display: 'grid', gridTemplateColumns: window.innerWidth > 768 ? '1fr 1fr' : '1fr', gap: 'clamp(2rem, 4vw, 4rem)', alignItems: 'center' }}>
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <h4 className="mono" style={{ color: 'var(--accent-primary)', fontSize: '0.9rem', marginBottom: '1.5rem' }}>{t('careers.questions_title')}</h4>
+            <h4 className="mono" style={{ color: 'var(--accent-primary)', fontSize: 'clamp(0.75rem, 2vw, 0.9rem)', marginBottom: '1.5rem' }}>{t('careers.questions_title')}</h4>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
               {(t('careers.questions') as string[]).map((q, i) => (
                 <div key={i} style={{ display: 'flex', gap: '1rem', alignItems: 'flex-start' }}>
-                  <span className="mono" style={{ color: 'var(--accent-primary)', fontSize: '0.8rem', marginTop: '4px' }}>{`0${i + 1}`}</span>
-                  <p style={{ color: 'var(--text-primary)', fontSize: '1.1rem', fontWeight: 500 }}>{q}</p>
+                  <span className="mono" style={{ color: 'var(--accent-primary)', fontSize: '0.75rem', marginTop: '4px', flexShrink: 0 }}>{`0${i + 1}`}</span>
+                  <p style={{ color: 'var(--text-primary)', fontSize: 'clamp(0.95rem, 2vw, 1.1rem)', fontWeight: 500 }}>{q}</p>
                 </div>
               ))}
             </div>
@@ -189,16 +200,16 @@ const Careers: React.FC = () => {
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
-            style={{ background: 'rgba(0, 242, 255, 0.03)', padding: '3rem', borderRadius: '12px', border: '1px solid var(--border-color)' }}
+            style={{ background: 'rgba(0, 242, 255, 0.03)', padding: 'clamp(1.5rem, 4vw, 3rem)', borderRadius: '12px', border: '1px solid var(--border-color)' }}
           >
-            <p style={{ color: 'var(--text-secondary)', fontSize: '1.1rem', lineHeight: '1.8' }}>
+            <p style={{ color: 'var(--text-secondary)', fontSize: 'clamp(0.95rem, 2vw, 1.1rem)', lineHeight: '1.8' }}>
               {t('careers.desc')}
             </p>
           </motion.div>
         </div>
 
-        <div style={{ marginTop: '5rem', textAlign: 'center', padding: '3rem', background: 'rgba(255,255,255,0.02)', borderRadius: '12px', border: '1px dashed var(--border-color)' }}>
-          <p style={{ color: 'var(--text-secondary)', fontSize: '1rem' }}>
+        <div style={{ marginTop: 'clamp(2rem, 5vw, 5rem)', textAlign: 'center', padding: 'clamp(1.5rem, 4vw, 3rem)', background: 'rgba(255,255,255,0.02)', borderRadius: '12px', border: '1px dashed var(--border-color)' }}>
+          <p style={{ color: 'var(--text-secondary)', fontSize: 'clamp(0.9rem, 2vw, 1rem)' }}>
             Don't see a role that fits? Send your CV and a cover letter to<br/>
             <motion.a 
               href="mailto:recruiting@tinvention.net" 
@@ -207,7 +218,7 @@ const Careers: React.FC = () => {
                 color: 'var(--accent-primary)', 
                 textDecoration: 'none', 
                 fontWeight: 'bold',
-                fontSize: '1.2rem',
+                fontSize: 'clamp(1rem, 2vw, 1.2rem)',
                 marginTop: '1rem',
                 display: 'inline-block'
               }}

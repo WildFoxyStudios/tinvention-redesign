@@ -7,38 +7,38 @@ const Services: React.FC = () => {
   const { t } = useTranslation();
   
   return (
-    <section id="services" style={{ padding: '8rem 0', background: 'var(--card-bg)' }}>
+    <section id="services" style={{ padding: 'clamp(3rem, 8vw, 8rem) 0', background: 'var(--card-bg)' }}>
       <div className="container">
-        <div style={{ marginBottom: '5rem' }}>
-          <h2 className="mono" style={{ color: 'var(--accent-primary)', fontSize: '1rem', marginBottom: '1rem' }}>[{t('services.tag')}]</h2>
-          <h3 style={{ fontSize: '2.5rem', marginBottom: '1.5rem', maxWidth: '800px' }}>{t('services.title')}</h3>
+        <div style={{ marginBottom: 'clamp(2.5rem, 6vw, 5rem)' }}>
+          <h2 className="mono" style={{ color: 'var(--accent-primary)', fontSize: '0.8rem', marginBottom: '1rem' }}>[{t('services.tag')}]</h2>
+          <h3 style={{ fontSize: 'clamp(1.75rem, 5vw, 2.5rem)', marginBottom: '1.5rem', maxWidth: '800px' }}>{t('services.title')}</h3>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4rem', marginBottom: '6rem' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: window.innerWidth > 992 ? '1fr 1fr' : '1fr', gap: 'clamp(2rem, 4vw, 4rem)', marginBottom: 'clamp(3rem, 6vw, 6rem)' }}>
           <motion.div 
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
             className="service-content"
           >
-            <h4 style={{ fontSize: '1.5rem', marginBottom: '1rem', color: 'var(--text-primary)' }}>{t('services.subtitle')}</h4>
-            <p style={{ color: 'var(--text-secondary)', marginBottom: '2rem', lineHeight: '1.8' }}>
+            <h4 style={{ fontSize: 'clamp(1.25rem, 4vw, 1.5rem)', marginBottom: '1rem', color: 'var(--text-primary)' }}>{t('services.subtitle')}</h4>
+            <p style={{ color: 'var(--text-secondary)', marginBottom: '2rem', lineHeight: '1.8', fontSize: '0.95rem' }}>
               {t('services.desc')}
             </p>
             
             <div style={{ 
               display: 'grid', 
               gridTemplateColumns: '1fr', 
-              gap: '1.2rem',
-              padding: '2rem',
+              gap: 'clamp(0.75rem, 2vw, 1.2rem)',
+              padding: 'clamp(1.5rem, 4vw, 2rem)',
               background: 'rgba(var(--accent-primary-rgb), 0.05)',
               borderLeft: '2px solid var(--accent-primary)',
               borderRadius: '0 8px 8px 0'
             }}>
               {t('about.nuances').map((nuance: string, i: number) => (
                 <div key={i} style={{ display: 'flex', gap: '1rem' }}>
-                  <Check size={18} style={{ color: 'var(--accent-primary)', flexShrink: 0, marginTop: '2px' }} />
-                  <span style={{ fontSize: '0.9rem', color: 'var(--text-secondary)' }}>{nuance}</span>
+                  <Check size={window.innerWidth < 480 ? 16 : 18} style={{ color: 'var(--accent-primary)', flexShrink: 0, marginTop: '2px' }} />
+                  <span style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>{nuance}</span>
                 </div>
               ))}
             </div>
@@ -50,7 +50,7 @@ const Services: React.FC = () => {
             transition={{ duration: 0.6 }}
             id="products" style={{ 
               background: 'var(--bg-color)', 
-              padding: '2.5rem', 
+              padding: 'clamp(1.5rem, 4vw, 2.5rem)', 
               borderRadius: '12px', 
               border: '1px solid var(--border-color)',
               boxShadow: 'var(--card-shadow)',
@@ -69,9 +69,9 @@ const Services: React.FC = () => {
             }} />
 
             <div style={{ position: 'relative', zIndex: 1 }}>
-              <h4 className="mono" style={{ color: 'var(--accent-primary)', marginBottom: '0.5rem', fontSize: '0.8rem' }}>{t('services.smartsourcing.tag')}</h4>
-              <h3 style={{ fontSize: '2rem', marginBottom: '1rem' }}>{t('services.smartsourcing.title')}</h3>
-              <p style={{ color: 'var(--text-secondary)', marginBottom: '2rem', fontSize: '1rem', lineHeight: '1.6' }}>
+              <h4 className="mono" style={{ color: 'var(--accent-primary)', marginBottom: '0.5rem', fontSize: '0.7rem' }}>{t('services.smartsourcing.tag')}</h4>
+              <h3 style={{ fontSize: 'clamp(1.5rem, 4vw, 2rem)', marginBottom: '1rem' }}>{t('services.smartsourcing.title')}</h3>
+              <p style={{ color: 'var(--text-secondary)', marginBottom: '2rem', fontSize: '0.95rem', lineHeight: '1.6' }}>
                 {t('services.smartsourcing.desc')}
               </p>
               
@@ -79,12 +79,12 @@ const Services: React.FC = () => {
                 {t('services.smartsourcing.features').map((f: string, i: number) => (
                   <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
                     <div style={{ width: '4px', height: '4px', borderRadius: '50%', background: 'var(--accent-primary)' }} />
-                    <span style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>{f}</span>
+                    <span style={{ color: 'var(--text-secondary)', fontSize: '0.85rem' }}>{f}</span>
                   </div>
                 ))}
               </div>
 
-              <div style={{ marginTop: '2.5rem', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+              <div style={{ marginTop: '2rem', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                 <button 
                   className="mono" 
                   onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
@@ -92,15 +92,19 @@ const Services: React.FC = () => {
                     background: 'transparent',
                     border: '1px solid var(--accent-primary)',
                     color: 'var(--accent-primary)',
-                    padding: '0.8rem 1.5rem',
+                    padding: '0.7rem 1.25rem',
                     borderRadius: '4px',
-                    fontSize: '0.8rem',
+                    fontSize: '0.75rem',
                     cursor: 'pointer',
                     transition: 'all 0.3s ease',
-                    width: 'fit-content'
+                    width: window.innerWidth < 480 ? '100%' : 'fit-content',
+                    minHeight: '44px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center'
                   }}>
                   {t('services.smartsourcing.cta')}
-                </button>
+                </button>65rem', color: 'var(--text-muted)', textDecoration: 'none', wordBreak: 'break-word
                 <a 
                   href={`mailto:${t('services.smartsourcing.contact_email')}`}
                   className="mono"

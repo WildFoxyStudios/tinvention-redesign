@@ -7,14 +7,14 @@ const Units: React.FC = () => {
   const { t } = useTranslation();
 
   return (
-    <section id="units" style={{ padding: '8rem 0', background: 'var(--card-bg)' }}>
+    <section id="units" style={{ padding: 'clamp(3rem, 8vw, 8rem) 0', background: 'var(--card-bg)' }}>
       <div className="container">
-        <div style={{ marginBottom: '5rem', textAlign: 'center' }}>
-          <h2 className="mono" style={{ color: 'var(--accent-primary)', fontSize: '1rem', marginBottom: '1rem' }}>[{t('units.tag')}]</h2>
-          <h3 style={{ fontSize: '2.5rem' }}>{t('units.title')}</h3>
+        <div style={{ marginBottom: 'clamp(2rem, 5vw, 5rem)', textAlign: 'center' }}>
+          <h2 className="mono" style={{ color: 'var(--accent-primary)', fontSize: '0.8rem', marginBottom: '1rem' }}>[{t('units.tag')}]</h2>
+          <h3 style={{ fontSize: 'clamp(1.75rem, 5vw, 2.5rem)' }}>{t('units.title')}</h3>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '3rem' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: window.innerWidth > 768 ? '1fr 1fr' : '1fr', gap: 'clamp(2rem, 4vw, 3rem)' }}>
           <motion.div 
             whileHover={{ y: -5 }}
             style={{ 
@@ -27,15 +27,15 @@ const Units: React.FC = () => {
             }}
           >
             <div style={{ color: 'var(--accent-primary)', marginBottom: '2rem' }}>
-              <Code2 size={48} />
+              <Code2 size={window.innerWidth < 480 ? 36 : 48} />
             </div>
-            <h4 style={{ fontSize: '1.75rem', marginBottom: '1.5rem' }}>{t('units.tailor.title')}</h4>
-            <p style={{ color: 'var(--text-secondary)', lineHeight: 1.8, marginBottom: '2rem' }}>
+            <h4 style={{ fontSize: 'clamp(1.25rem, 4vw, 1.75rem)', marginBottom: '1.5rem' }}>{t('units.tailor.title')}</h4>
+            <p style={{ color: 'var(--text-secondary)', lineHeight: 1.8, marginBottom: '2rem', fontSize: '0.9rem' }}>
               {t('units.tailor.desc')}
             </p>
             <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
               {t('units.tailor.tags').map((tag: string, i: number) => (
-                <span key={i} className="mono" style={{ fontSize: '0.75rem', color: 'var(--accent-primary)', border: '1px solid rgba(0,242,255,0.2)', padding: '4px 10px', borderRadius: '4px' }}>{tag}</span>
+                <span key={i} className="mono" style={{ fontSize: '0.7rem', color: 'var(--accent-primary)', border: '1px solid rgba(0,242,255,0.2)', padding: '4px 8px', borderRadius: '4px', whiteSpace: 'nowrap' }}>{tag}</span>
               ))}
             </div>
             
@@ -56,15 +56,15 @@ const Units: React.FC = () => {
             }}
           >
             <div style={{ color: 'var(--accent-secondary)', marginBottom: '2rem' }}>
-              <LineChart size={48} />
+              <LineChart size={window.innerWidth < 480 ? 36 : 48} />
             </div>
-            <h4 style={{ fontSize: '1.75rem', marginBottom: '1.5rem' }}>{t('units.risk.title')}</h4>
-            <p style={{ color: 'var(--text-secondary)', lineHeight: 1.8, marginBottom: '2rem' }}>
+            <h4 style={{ fontSize: 'clamp(1.25rem, 4vw, 1.75rem)', marginBottom: '1.5rem' }}>{t('units.risk.title')}</h4>
+            <p style={{ color: 'var(--text-secondary)', lineHeight: 1.8, marginBottom: '2rem', fontSize: '0.9rem' }}>
               {t('units.risk.desc')}
             </p>
             <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
               {t('units.risk.tags').map((tag: string, i: number) => (
-                <span key={i} className="mono" style={{ fontSize: '0.75rem', color: 'var(--accent-secondary)', border: '1px solid rgba(112,0,255,0.2)', padding: '4px 10px', borderRadius: '4px' }}>{tag}</span>
+                <span key={i} className="mono" style={{ fontSize: '0.7rem', color: 'var(--accent-secondary)', border: '1px solid rgba(112,0,255,0.2)', padding: '4px 8px', borderRadius: '4px', whiteSpace: 'nowrap' }}>{tag}</span>
               ))}
             </div>
 

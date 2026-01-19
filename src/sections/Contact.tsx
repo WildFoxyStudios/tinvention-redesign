@@ -32,56 +32,56 @@ const Contact: React.FC = () => {
   };
 
   return (
-    <section id="contact" style={{ padding: '8rem 0', background: 'var(--bg-color)' }}>
+    <section id="contact" style={{ padding: 'clamp(3rem, 8vw, 8rem) 0', background: 'var(--bg-color)' }}>
       <div className="container">
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4rem' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: window.innerWidth > 992 ? '1fr 1fr' : '1fr', gap: 'clamp(2rem, 4vw, 4rem)' }}>
           <div>
-            <h2 className="mono" style={{ color: 'var(--accent-primary)', fontSize: '1rem', marginBottom: '1rem' }}>[{t('contact.tag')}]</h2>
-            <h3 style={{ fontSize: '2.5rem', marginBottom: '2rem' }}>{t('contact.title')}</h3>
-            <p style={{ color: 'var(--text-secondary)', marginBottom: '3rem', fontSize: '1.1rem' }}>
+            <h2 className="mono" style={{ color: 'var(--accent-primary)', fontSize: '0.8rem', marginBottom: '1rem' }}>[{t('contact.tag')}]</h2>
+            <h3 style={{ fontSize: 'clamp(1.75rem, 5vw, 2.5rem)', marginBottom: '1.5rem' }}>{t('contact.title')}</h3>
+            <p style={{ color: 'var(--text-secondary)', marginBottom: '2rem', fontSize: 'clamp(0.95rem, 3vw, 1.1rem)' }}>
               {t('contact.desc')}
             </p>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 'clamp(1.5rem, 3vw, 2rem)' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
-                <div style={{ padding: '1rem', background: 'var(--card-bg)', borderRadius: '8px', border: '1px solid var(--border-color)', color: 'var(--accent-primary)' }}>
-                  <Mail size={24} />
+                <div style={{ padding: '0.75rem', background: 'var(--card-bg)', borderRadius: '8px', border: '1px solid var(--border-color)', color: 'var(--accent-primary)' }}>
+                  <Mail size={window.innerWidth < 480 ? 20 : 24} />
                 </div>
                 <div>
-                  <div className="mono" style={{ color: 'var(--text-muted)', fontSize: '0.7rem', textTransform: 'uppercase' }}>Email</div>
-                  <div style={{ fontSize: '1.1rem' }}>info@tinvention.net</div>
+                  <div className="mono" style={{ color: 'var(--text-muted)', fontSize: '0.65rem', textTransform: 'uppercase' }}>Email</div>
+                  <div style={{ fontSize: 'clamp(0.95rem, 2vw, 1.1rem)' }}>info@tinvention.net</div>
                 </div>
               </div>
 
-              <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
-                <div style={{ padding: '1rem', background: 'var(--card-bg)', borderRadius: '8px', border: '1px solid var(--border-color)', color: 'var(--accent-primary)' }}>
-                  <MapPin size={24} />
+              <div style={{ display: 'flex', alignItems: 'flex-start', gap: 'clamp(1rem, 2vw, 1.5rem)', flexDirection: window.innerWidth < 480 ? 'column' : 'row' }}>
+                <div style={{ padding: '0.75rem', background: 'var(--card-bg)', borderRadius: '8px', border: '1px solid var(--border-color)', color: 'var(--accent-primary)', minHeight: window.innerWidth < 480 ? 'auto' : '60px' }}>
+                  <MapPin size={window.innerWidth < 480 ? 20 : 24} />
                 </div>
                 <div>
-                  <div className="mono" style={{ color: 'var(--text-muted)', fontSize: '0.7rem', textTransform: 'uppercase' }}>HQ</div>
-                  <div style={{ fontSize: '1.1rem' }}>Via Pacini 93, Milano</div>
+                  <div className="mono" style={{ color: 'var(--text-muted)', fontSize: '0.65rem', textTransform: 'uppercase' }}>HQ</div>
+                  <div style={{ fontSize: 'clamp(0.95rem, 2vw, 1.1rem)' }}>Via Pacini 93, Milano</div>
                 </div>
               </div>
 
-              <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
-                <div style={{ padding: '1rem', background: 'var(--card-bg)', borderRadius: '8px', border: '1px solid var(--border-color)', color: 'var(--accent-primary)' }}>
-                  <Phone size={24} />
+              <div style={{ display: 'flex', alignItems: 'flex-start', gap: 'clamp(1rem, 2vw, 1.5rem)', flexDirection: window.innerWidth < 480 ? 'column' : 'row' }}>
+                <div style={{ padding: '0.75rem', background: 'var(--card-bg)', borderRadius: '8px', border: '1px solid var(--border-color)', color: 'var(--accent-primary)', minHeight: window.innerWidth < 480 ? 'auto' : '60px' }}>
+                  <Phone size={window.innerWidth < 480 ? 20 : 24} />
                 </div>
                 <div>
-                  <div className="mono" style={{ color: 'var(--text-muted)', fontSize: '0.7rem', textTransform: 'uppercase' }}>Phone</div>
-                  <div style={{ fontSize: '1.1rem' }}>+39 0362 1855530</div>
+                  <div className="mono" style={{ color: 'var(--text-muted)', fontSize: '0.65rem', textTransform: 'uppercase' }}>Phone</div>
+                  <div style={{ fontSize: 'clamp(0.95rem, 2vw, 1.1rem)' }}>+39 0362 1855530</div>
                 </div>
               </div>
 
-              <div style={{ display: 'flex', gap: '1rem', marginTop: '1rem' }}>
-                <a href="https://www.linkedin.com/company/1274530/" target="_blank" rel="noopener noreferrer" style={{ padding: '0.8rem', background: 'var(--card-bg)', border: '1px solid var(--border-color)', borderRadius: '8px', color: 'var(--text-muted)', transition: 'all 0.3s ease' }} onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--accent-primary)'; e.currentTarget.style.borderColor = 'var(--accent-primary)'; }} onMouseLeave={(e) => { e.currentTarget.style.color = 'var(--text-muted)'; e.currentTarget.style.borderColor = 'var(--border-color)'; }}>
-                  <Linkedin size={20} />
+              <div style={{ display: 'flex', gap: 'clamp(0.5rem, 2vw, 1rem)', marginTop: '1rem', flexWrap: 'wrap' }}>
+                <a href="https://www.linkedin.com/company/1274530/" target="_blank" rel="noopener noreferrer" style={{ padding: '0.65rem', background: 'var(--card-bg)', border: '1px solid var(--border-color)', borderRadius: '8px', color: 'var(--text-muted)', transition: 'all 0.3s ease', minHeight: '44px', minWidth: '44px', display: 'flex', alignItems: 'center', justifyContent: 'center' }} onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--accent-primary)'; e.currentTarget.style.borderColor = 'var(--accent-primary)'; }} onMouseLeave={(e) => { e.currentTarget.style.color = 'var(--text-muted)'; e.currentTarget.style.borderColor = 'var(--border-color)'; }}>
+                  <Linkedin size={window.innerWidth < 480 ? 18 : 20} />
                 </a>
-                <a href="https://it-it.facebook.com/Tinvention-Ingegneria-Informatica--69227354093/" target="_blank" rel="noopener noreferrer" style={{ padding: '0.8rem', background: 'var(--card-bg)', border: '1px solid var(--border-color)', borderRadius: '8px', color: 'var(--text-muted)', transition: 'all 0.3s ease' }} onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--accent-primary)'; e.currentTarget.style.borderColor = 'var(--accent-primary)'; }} onMouseLeave={(e) => { e.currentTarget.style.color = 'var(--text-muted)'; e.currentTarget.style.borderColor = 'var(--border-color)'; }}>
-                  <Facebook size={20} />
+                <a href="https://it-it.facebook.com/Tinvention-Ingegneria-Informatica--69227354093/" target="_blank" rel="noopener noreferrer" style={{ padding: '0.65rem', background: 'var(--card-bg)', border: '1px solid var(--border-color)', borderRadius: '8px', color: 'var(--text-muted)', transition: 'all 0.3s ease', minHeight: '44px', minWidth: '44px', display: 'flex', alignItems: 'center', justifyContent: 'center' }} onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--accent-primary)'; e.currentTarget.style.borderColor = 'var(--accent-primary)'; }} onMouseLeave={(e) => { e.currentTarget.style.color = 'var(--text-muted)'; e.currentTarget.style.borderColor = 'var(--border-color)'; }}>
+                  <Facebook size={window.innerWidth < 480 ? 18 : 20} />
                 </a>
-                <a href="https://github.com/Tinvention/" target="_blank" rel="noopener noreferrer" style={{ padding: '0.8rem', background: 'var(--card-bg)', border: '1px solid var(--border-color)', borderRadius: '8px', color: 'var(--text-muted)', transition: 'all 0.3s ease' }} onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--accent-primary)'; e.currentTarget.style.borderColor = 'var(--accent-primary)'; }} onMouseLeave={(e) => { e.currentTarget.style.color = 'var(--text-muted)'; e.currentTarget.style.borderColor = 'var(--border-color)'; }}>
-                  <Github size={20} />
+                <a href="https://github.com/Tinvention/" target="_blank" rel="noopener noreferrer" style={{ padding: '0.65rem', background: 'var(--card-bg)', border: '1px solid var(--border-color)', borderRadius: '8px', color: 'var(--text-muted)', transition: 'all 0.3s ease', minHeight: '44px', minWidth: '44px', display: 'flex', alignItems: 'center', justifyContent: 'center' }} onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--accent-primary)'; e.currentTarget.style.borderColor = 'var(--accent-primary)'; }} onMouseLeave={(e) => { e.currentTarget.style.color = 'var(--text-muted)'; e.currentTarget.style.borderColor = 'var(--border-color)'; }}>
+                  <Github size={window.innerWidth < 480 ? 18 : 20} />
                 </a>
               </div>
             </div>
@@ -89,12 +89,12 @@ const Contact: React.FC = () => {
 
           <div style={{ 
             background: 'var(--card-bg)', 
-            padding: '3rem', 
+            padding: 'clamp(1.5rem, 4vw, 3rem)', 
             borderRadius: '8px', 
             border: '1px solid var(--border-color)'
           }}>
             <form style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }} onSubmit={handleSubmit}>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: window.innerWidth > 480 ? '1fr 1fr' : '1fr', gap: '1.5rem' }}>
                 <div>
                   <label className="mono" style={{ display: 'block', fontSize: '0.7rem', color: 'var(--text-muted)', marginBottom: '0.5rem', marginLeft: '0.2rem' }}>{t('contact.labels.name')}</label>
                   <input 
@@ -104,7 +104,7 @@ const Contact: React.FC = () => {
                     value={formData.name}
                     onChange={handleChange}
                     disabled={status === 'sending'}
-                    style={{ width: '100%', background: 'var(--bg-color)', border: '1px solid var(--border-color)', padding: '0.75rem', borderRadius: '4px', color: 'var(--text-primary)' }} 
+                    style={{ width: '100%', background: 'var(--bg-color)', border: '1px solid var(--border-color)', padding: '0.75rem', borderRadius: '4px', color: 'var(--text-primary)', fontSize: '16px' }} 
                   />
                 </div>
                 <div>
@@ -116,7 +116,7 @@ const Contact: React.FC = () => {
                     value={formData.email}
                     onChange={handleChange}
                     disabled={status === 'sending'}
-                    style={{ width: '100%', background: 'var(--bg-color)', border: '1px solid var(--border-color)', padding: '0.75rem', borderRadius: '4px', color: 'var(--text-primary)' }} 
+                    style={{ width: '100%', background: 'var(--bg-color)', border: '1px solid var(--border-color)', padding: '0.75rem', borderRadius: '4px', color: 'var(--text-primary)', fontSize: '16px' }} 
                   />
                 </div>
               </div>
@@ -129,7 +129,7 @@ const Contact: React.FC = () => {
                   value={formData.message}
                   onChange={handleChange}
                   disabled={status === 'sending'}
-                  style={{ width: '100%', background: 'var(--bg-color)', border: '1px solid var(--border-color)', padding: '0.75rem', borderRadius: '4px', color: 'var(--text-primary)', resize: 'none' }}
+                  style={{ width: '100%', background: 'var(--bg-color)', border: '1px solid var(--border-color)', padding: '0.75rem', borderRadius: '4px', color: 'var(--text-primary)', resize: 'vertical', fontSize: '16px', minHeight: '150px' }}
                 ></textarea>
               </div>
               <button 
@@ -138,7 +138,7 @@ const Contact: React.FC = () => {
                 style={{ 
                   background: status === 'success' ? '#27c93f' : status === 'error' ? '#ff5f56' : 'var(--accent-primary)', 
                   color: '#000', 
-                  padding: '1rem', 
+                  padding: '0.875rem 1.5rem', 
                   borderRadius: '4px', 
                   fontWeight: 'bold',
                   marginTop: '1rem',
@@ -149,7 +149,9 @@ const Contact: React.FC = () => {
                   transition: 'all 0.3s ease',
                   cursor: status === 'sending' ? 'not-allowed' : 'pointer',
                   opacity: status === 'sending' ? 0.7 : 1,
-                  border: 'none'
+                  border: 'none',
+                  minHeight: '44px',
+                  fontSize: '0.8rem'
                 }}>
                 {status === 'sending' ? (
                   <><Loader2 className="animate-spin" size={18} /> SENDING...</>

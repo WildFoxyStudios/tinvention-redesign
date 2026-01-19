@@ -16,17 +16,22 @@ const Footer: React.FC = () => {
 
   return (
     <footer style={{ 
-      padding: '6rem 2rem 3rem', 
+      padding: 'clamp(2rem, 6vw, 6rem) 2rem 3rem', 
       background: 'var(--bg-color)', 
       borderTop: '1px solid var(--border-color)' 
     }}>
       <div className="container">
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '4rem', marginBottom: '4rem' }}>
+        <div style={{ 
+          display: 'grid', 
+          gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', 
+          gap: 'clamp(2rem, 4vw, 4rem)', 
+          marginBottom: 'clamp(2rem, 4vw, 4rem)' 
+        }}>
           <div>
             <Link to="/" style={{ display: 'block', marginBottom: '1.5rem', color: 'var(--text-primary)' }}>
               <Logo height={20} />
             </Link>
-            <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', lineHeight: 1.6, marginBottom: '2rem' }}>
+            <p style={{ color: 'var(--text-muted)', fontSize: '0.85rem', lineHeight: 1.6, marginBottom: '2rem' }}>
               Realizing technological inventions for your business since inception with quality and human focus.
             </p>
             <div style={{ display: 'flex', gap: '1rem' }}>
@@ -82,7 +87,8 @@ const Footer: React.FC = () => {
           flexWrap: 'wrap', 
           gap: '1rem',
           color: 'var(--text-muted)',
-          fontSize: '0.8rem'
+          fontSize: '0.7rem',
+          flexDirection: window.innerWidth < 480 ? 'column' : 'row'
         }}>
           <p>{t('footer.copy')}</p>
           <div style={{ display: 'flex', gap: '2rem' }}>
